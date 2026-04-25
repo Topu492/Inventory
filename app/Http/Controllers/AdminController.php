@@ -71,8 +71,11 @@ return back()->withErrors(['code' => 'Invalid Verification Code']);
 }
 // End Method
 
+
 public function AdminProfile(){
-return view('admin.admin_profile');
-}
-// End Method 
+    $id = Auth::user()->id;
+    $profileData = User::find($id);
+    return view('admin.admin_profile', compact('profileData'));
+  }
+  // End Method 
 }
