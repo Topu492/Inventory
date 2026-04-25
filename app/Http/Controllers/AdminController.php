@@ -103,12 +103,17 @@ if ($request->hasFile('photo')) {
     }
 }
 
-$data->save();
+ $data->save();
 
-return redirect()->back();
+    $notification = array(
+        'message' => 'Profile Updated Successfully',
+        'alert-type' => 'success'
+    );
 
-}
-// End Method 
+    return redirect()->back()->with($notification);
+
+  }
+    // End Method 
 
 
 private function deleteOldImage(string $oldPhotoPath): void {
